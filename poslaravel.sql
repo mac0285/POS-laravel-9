@@ -11,7 +11,7 @@
  Target Server Version : 100407
  File Encoding         : 65001
 
- Date: 04/06/2023 11:58:20
+ Date: 04/06/2023 21:14:25
 */
 
 SET NAMES utf8mb4;
@@ -104,7 +104,7 @@ CREATE TABLE `order_items`  (
   INDEX `order_items_product_id_foreign`(`product_id`) USING BTREE,
   CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `order_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of order_items
@@ -121,6 +121,7 @@ INSERT INTO `order_items` VALUES (9, 3000000.0000, 2, 3, 2, '2023-06-04 03:33:28
 INSERT INTO `order_items` VALUES (10, 2800000.0000, 2, 3, 3, '2023-06-04 03:33:28', '2023-06-04 03:33:28');
 INSERT INTO `order_items` VALUES (11, 16000.0000, 2, 3, 4, '2023-06-04 03:33:28', '2023-06-04 03:33:28');
 INSERT INTO `order_items` VALUES (12, 27000.0000, 1, 3, 5, '2023-06-04 03:33:28', '2023-06-04 03:33:28');
+INSERT INTO `order_items` VALUES (13, 1700000.0000, 1, 4, 1, '2023-06-04 12:50:38', '2023-06-04 12:50:38');
 
 -- ----------------------------
 -- Table structure for orders
@@ -137,7 +138,7 @@ CREATE TABLE `orders`  (
   INDEX `orders_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `orders_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
@@ -145,6 +146,7 @@ CREATE TABLE `orders`  (
 INSERT INTO `orders` VALUES (1, NULL, 1, '2023-06-04 03:25:46', '2023-06-04 03:25:46');
 INSERT INTO `orders` VALUES (2, NULL, 1, '2023-06-04 03:26:02', '2023-06-04 03:26:02');
 INSERT INTO `orders` VALUES (3, NULL, 1, '2023-06-04 03:33:28', '2023-06-04 03:33:28');
+INSERT INTO `orders` VALUES (4, NULL, 1, '2023-06-04 12:50:38', '2023-06-04 12:50:38');
 
 -- ----------------------------
 -- Table structure for password_resets
@@ -177,7 +179,7 @@ CREATE TABLE `payments`  (
   INDEX `payments_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `payments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `payments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of payments
@@ -185,6 +187,7 @@ CREATE TABLE `payments`  (
 INSERT INTO `payments` VALUES (1, 28537000.0000, 1, 1, '2023-06-04 03:25:46', '2023-06-04 03:25:46');
 INSERT INTO `payments` VALUES (2, 38537000.0000, 2, 1, '2023-06-04 03:26:02', '2023-06-04 03:26:02');
 INSERT INTO `payments` VALUES (3, 22643000.0000, 3, 1, '2023-06-04 03:33:28', '2023-06-04 03:33:28');
+INSERT INTO `payments` VALUES (4, 1700000.0000, 4, 1, '2023-06-04 12:50:38', '2023-06-04 12:50:38');
 
 -- ----------------------------
 -- Table structure for products
@@ -208,7 +211,7 @@ CREATE TABLE `products`  (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (1, 'Kabel Cat 6', 'Network supplies', 'products/nqilviAGnhqxwSpNR9OfVEg7sxqflmEvaclJ62Uq.bmp', '234', 1700000.00, 93, 1, '2023-06-04 03:18:58', '2023-06-04 03:33:28');
+INSERT INTO `products` VALUES (1, 'Kabel Cat 6', 'Network supplies', 'products/nqilviAGnhqxwSpNR9OfVEg7sxqflmEvaclJ62Uq.bmp', '234', 1700000.00, 92, 1, '2023-06-04 03:18:58', '2023-06-04 12:50:38');
 INSERT INTO `products` VALUES (2, 'Kabel Cat 5', 'Network supplies', 'products/nqilviAGnhqxwSpNR9OfVEg7sxqflmEvaclJ62Uq.bmp', '231', 1500000.00, 95, 1, '2023-06-04 03:18:58', '2023-06-04 03:33:28');
 INSERT INTO `products` VALUES (3, 'Kabel Cat 5e', 'Network supplies', 'products/nqilviAGnhqxwSpNR9OfVEg7sxqflmEvaclJ62Uq.bmp', '232', 1400000.00, 95, 1, '2023-06-04 03:18:58', '2023-06-04 03:33:28');
 INSERT INTO `products` VALUES (4, 'Kabel Power 3', 'ME supplies', 'products/nqilviAGnhqxwSpNR9OfVEg7sxqflmEvaclJ62Uq.bmp', '233', 8000.00, 73, 1, '2023-06-04 03:18:58', '2023-06-04 03:33:28');
@@ -255,7 +258,6 @@ CREATE TABLE `user_cart`  (
 -- ----------------------------
 -- Records of user_cart
 -- ----------------------------
-INSERT INTO `user_cart` VALUES (1, 1, 1);
 
 -- ----------------------------
 -- Table structure for users
@@ -273,11 +275,13 @@ CREATE TABLE `users`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Admin', 'CA', 'admin@mail.com', NULL, '$2y$10$giVzrmrsRydGkoVdLQWq0eyJhhDNuB1.Xw8fZb.FNrX/yfJ1hjViq', NULL, '2023-06-04 03:13:52', '2023-06-04 03:13:52');
+INSERT INTO `users` VALUES (2, 'Haris', 'Rifai', 'moh.h.rifai@gmail.com', NULL, '$2y$10$m5dJr6qbDduIRStHm00y8u0JvS4IcYrat2CEs29tW.nZnbAhjUMjW', NULL, '2023-06-04 12:52:12', '2023-06-04 12:52:12');
+INSERT INTO `users` VALUES (3, 'cahya', 'ibrahim', 'cahya.ibrahim.pa@gmail.com', NULL, '$2y$10$Q5sgz5epez2VZDiS3kypEu3ExwoubWWd91hkxmEyfGH4Z.xxPcuBK', NULL, '2023-06-04 12:53:18', '2023-06-04 12:53:18');
 
 SET FOREIGN_KEY_CHECKS = 1;
